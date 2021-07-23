@@ -12,6 +12,7 @@
               <span v-else-if="activeMainAnimationCameraText" key="camera" class="point-camera">Sensor detect <br> video event.</span>
               <span v-else-if="activeMainAnimationAiText" key="ai" class="point-ai">Human animal car <br> whatever.  </span>
               <span v-else-if="activeMainAnimationOperatorText" key="operator" class="point-operator">Monitoring <br> when you need. </span>
+              <span v-else key="all" class="point-all">Anything <br> you dreamed. </span>
             </transition>
           </span>
         </div>
@@ -227,6 +228,10 @@ export default {
         this.activeMainAnimationOperator = false
         await this.$tool.wait(300)
         this.activeMainAnimationAi = false
+        this.activeMainAnimationSmsText = false
+        this.activeMainAnimationCameraText = false
+        this.activeMainAnimationAiText = false
+        this.activeMainAnimationOperatorText = false
         await this.$tool.wait(10000)
         
       }
@@ -305,6 +310,10 @@ export default {
 .point-operator {
   color: #1EA675;
   text-decoration: solid underline #1ea67430 6px;
+}
+.point-all {
+  color: var(--gray-high);
+  text-decoration: solid underline #00000030 6px;
 }
 .main-img {
   position: absolute;
