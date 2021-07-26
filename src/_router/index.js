@@ -17,6 +17,22 @@ export default new Router({
           path: 'home',
           component: () => import("@/_routes/Home")
         },
+        {
+          path: 'whychekt',
+          component: () => import("@/_routes/pages/WhyChekt")
+        },
+        {
+          path: 'enterprise',
+          component: () => import("@/_routes/pages/Enterprise")
+        },
+        {
+          path: 'support',
+          component: () => import("@/_routes/pages/Support")
+        },
+        {
+          path: 'partners',
+          component: () => import("@/_routes/pages/Partners")
+        },
       ]
     }
   ]

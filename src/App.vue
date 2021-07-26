@@ -62,6 +62,9 @@ body{
   --border: rgba(0, 0, 0, 0.1);
   
   --white: #ffffff;
+  --white-medium: #9D9D9D;
+  --white-low: #666666;
+
   --black: #000000;
 
   --backdrop: rgba(0, 0, 0, 0.6);

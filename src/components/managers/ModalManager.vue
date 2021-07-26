@@ -1,7 +1,7 @@
 <template>
   <div>
-    <transition name="fade">
-    <div v-if="modalStatus" class="modal-1">
+    <!-- Main Youtube -->
+    <div v-if="mainYoutubeModalStatus">
       <div
       class="backdrop"
       ></div>
@@ -16,17 +16,41 @@
          ref="youtube" />
       </div>
     </div>
-    </transition>
+
+    <!-- Home Mobile Menu -->
+      <div v-if="homeMobileMenuModalStatus">
+        <!-- backdrop -->
+        <div class="backdrop"></div>
+        <!-- body -->
+        <div class="home-mobile-menu">
+          <div class="home-mobile-menu-header">
+            <div class="home-mobile-menu-title">CHeKT Menu</div>
+            <div @click="closeModal()" class="home-mobile-menu-close">
+              <MyIcon v-bind:color="'var(--gray-high)'" v-bind:icon="'close'" v-bind:width="32" />
+            </div>
+          </div>
+          <div class="home-mobile-menu-body">
+            <div class="home-mobile-menu-whychekt">💙 Why CHeKT</div>
+            <div class="home-mobile-menu-enterprise">💰 Enterprise</div>
+            <div class="home-mobile-menu-support">🤹🏽‍♀️ Support</div>
+            <div class="home-mobile-menu-partners">👨‍👨‍👦‍👦 Partners</div>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
+import MyIcon from '@/components/MyIcon'
 import Vue from 'vue'
 import VueYoutube from 'vue-youtube'
 Vue.use(VueYoutube)
 
 export default {
   name: 'HelloWorld',
+  components: {
+    MyIcon,
+  },
   data () {
     return {
       videoId: 'C7rOsLZVL9o',
@@ -53,8 +77,11 @@ export default {
         end: this.end,
       };
     },
-    modalStatus: function () {
-      return this.$store.getters.modalStatus
+    mainYoutubeModalStatus: function () {
+      return this.$store.getters.mainYoutubeModalStatus
+    },
+    homeMobileMenuModalStatus: function () {
+      return this.$store.getters.homeMobileMenuModalStatus
     },
   },
   created: function () {
@@ -67,7 +94,7 @@ export default {
     //   this.player.setSize(960, 540)
     // },
     closeModal: function () {
-      this.$store.commit('MODAL_STATUS', false)
+      this.$store.commit('HOME_MOBILE_MENU_MODAL_STATUS', false)
       var bodyEl = document.getElementsByTagName("BODY")[0];
       bodyEl.style.overflow = "auto";
     },
@@ -86,8 +113,8 @@ export default {
   animation-duration: .5s;
 }
 .video-viewer {
-  /* height: 100%;
-  width: 100%; */
+  height: 100%;
+  width: 100%;
   top:0;right:0;bottom:0;left:0;
   display: flex;
   align-items: center;
@@ -99,6 +126,43 @@ export default {
   animation-delay: .1s;
 }
 
+  /* Home Mobile Menu */
+
+.home-mobile-menu {
+  top:0;right:0;bottom:0;left:0;
+  margin: 20px;
+  position: fixed;
+  z-index: 9999;
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 30px;
+}
+.home-mobile-menu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.home-mobile-menu-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+.home-mobile-menu-close {
+  cursor: pointer;
+}
+.home-mobile-menu-body {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 120px;
+}
+.home-mobile-menu-body > div {
+  margin-top: 50px;
+  cursor: pointer;
+  color: var(--gray-high)
+}
+.home-mobile-menu-body > div:hover{
+  color: var(--primary)
+}
 /* ANIMATION */
 
 @keyframes fadein {
@@ -119,12 +183,5 @@ export default {
     transform: scale(1);
   }
 }
-
-/* .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-} */
 
 </style>

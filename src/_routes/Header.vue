@@ -6,16 +6,16 @@
     </a>
     <div class="menus">
       <div class="menu">
-        <div>Why CHeKT</div>
-        <div>Enterprise</div>
-        <div>Support</div>
-        <div>Partners</div>
+        <div @click="onClickMenu('whychekt')">Why CHeKT</div>
+        <div @click="onClickMenu('enterprise')">Enterprise</div>
+        <div @click="onClickMenu('support')">Support</div>
+        <div @click="onClickMenu('partners')">Partners</div>
       </div>
       <div class="menu-button">Contact Us</div>
     </div>
     <div class="menus-mobile">
-      <div class="menu-button-mobile">
-        <MyIcon v-bind:color="logoColor" v-bind:icon="'menu'" v-bind:width="32" />
+      <div @click="openMenuModal()" class="menu-button-mobile">
+        <MyIcon v-bind:color="'var(--gray-high)'" v-bind:icon="'menu'" v-bind:width="32" />
       </div>
     </div>
   </div>
@@ -41,6 +41,31 @@ export default {
       this.logoColor = 'var(--gray-high)'
     },
     handleScroll: function () {
+    },
+    openMenuModal: function () {
+      this.$store.commit('HOME_MOBILE_MENU_MODAL_STATUS', true)
+      var bodyEl = document.getElementsByTagName("BODY")[0];
+      bodyEl.style.overflow = "hidden";
+    },
+    onClickMenu: function (menu) {
+      switch (menu) {
+        case 'whychekt':
+        this.$router.push({path: `/whychekt`}) 
+          break;
+        case 'enterprise':
+          this.$router.push({path: `/enterprise`}) 
+          break
+       case 'support':
+         this.$router.push({path: `/support`}) 
+          break
+       case 'partners':
+         this.$router.push({path: `/partners`}) 
+          break
+        default:
+          alert('You cannot go to Menu. please try again')
+          break;
+      }
+      
     }
   }
 }

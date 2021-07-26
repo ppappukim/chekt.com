@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import {
   RESET_STATE,
-  MODAL_STATUS,
+  MAIN_YOUTUBE_MODAL_STATUS,
+  HOME_MOBILE_MENU_MODAL_STATUS
 } from '@/store/mutation-types'
 
 let initialState = {
-  modalStatus: false,
+  mainYoutubeModalStatus: false,
+  homeMobileMenuModalStatus: false,
   status: {
   }
 }
@@ -15,8 +17,11 @@ const state = Vue.util.extend({}, initialState)
 
 // getters
 const getters = {
-  modalStatus: function (state) {
-    return state.modalStatus
+  mainYoutubeModalStatus: function (state) {
+    return state.mainYoutubeModalStatus
+  },
+  homeMobileMenuModalStatus: function (state) {
+    return state.homeMobileMenuModalStatus
   },
 }
 
@@ -31,8 +36,11 @@ const mutations = {
       Vue.set(state, f, initialState[f])
     }
   },
-  [MODAL_STATUS]: function (state, isModalOpen) {
-    state.modalStatus = isModalOpen
+  [MAIN_YOUTUBE_MODAL_STATUS]: function (state, isModalOpen) {
+    state.mainYoutubeModalStatus = isModalOpen
+  },
+  [HOME_MOBILE_MENU_MODAL_STATUS]: function (state, isModalOpen) {
+    state.homeMobileMenuModalStatus = isModalOpen
   },
 }
 

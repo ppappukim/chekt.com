@@ -8,7 +8,8 @@ export const PROCESS_API_FAILURE = 'PROCESS_API_FAILURE'
 ///////////
 // MODAL //
 ///////////
-export const MODAL_STATUS = 'MODAL_STATUS'
+export const MAIN_YOUTUBE_MODAL_STATUS = 'MAIN_YOUTUBE_MODAL_STATUS'
+export const HOME_MOBILE_MENU_MODAL_STATUS = 'HOME_MOBILE_MENU_MODAL_STATUS'
 
 /////////////
 // GENERAL //

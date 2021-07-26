@@ -174,7 +174,7 @@ export default {
       this.doMainAnimation()
     },
     clickModal: function() {
-      this.$store.commit('MODAL_STATUS', true)
+      this.$store.commit('MAIN_YOUTUBE_MODAL_STATUS', true)
       var bodyEl = document.getElementsByTagName("BODY")[0];
       bodyEl.style.overflow = "hidden";
     },
@@ -680,13 +680,7 @@ export default {
 
 /* ANIMATIONS */
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateY(10000px);
-}
+
 
 /* SECTION 1 */
 .heading-group > .title > span:nth-child(1) {
@@ -709,19 +703,13 @@ export default {
   transition-delay: .5s !important;
   transform: translateY(20px);
 }
-.heading-group .desc {
-  transition-delay: .5s !important;
-  transform: translateY(20px);
-}
 
 .heading-group .watch-video-button {
   transition-delay: .6s !important;
   transform: translateY(20px);
 }
 
-.heading-group > .title > span:nth-child(1).active,
-.heading-group > .title > span:nth-child(2).active,
-.heading-group > .title > span:nth-child(3).active {
+.heading-group > .title > span.active {
   transform: translateY(0px);
 }
 
